@@ -85,7 +85,7 @@ export default function NavBar() {
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700">
                 <User className="h-4 w-4 text-amber-600" />
-                <span className="max-w-[120px] truncate">
+                <span className="max-w-[120px] truncate font-bold">
                   {session.user.name}
                 </span>
               </div>
@@ -169,7 +169,7 @@ export default function NavBar() {
                     {session.user.name?.charAt(0).toUpperCase() || "U"}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">
+                    <p className="text-sm font-bold text-slate-900">
                       {session.user.name}
                     </p>
                     <p className="text-xs text-slate-500">

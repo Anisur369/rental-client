@@ -6,7 +6,7 @@ import { jwt } from "better-auth/plugins"
 // import { Resend } from 'resend';
 
 const client = new MongoClient(process.env.BETTER_AUTH_DB_URL);
-const db = client.db("AnisAuth");
+const db = client.db("equipmentRentalDB");
 
 // const resend = new Resend(process.env.BETTER_AUTH_RESEND_API_KEY);
 

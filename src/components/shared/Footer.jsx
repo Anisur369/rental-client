@@ -6,7 +6,7 @@ import { Wrench, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 const QUICK_LINKS = [
   { name: "Home", href: "/" },
-  { name: "All Equipment", href: "/all-equipment" },
+  { name: "All Equipment", href: "/equipment" },
   { name: "How It Works", href: "/how-it-works" },
   { name: "About Us", href: "/about" },
   { name: "Contact Us", href: "/contact" },
@@ -178,7 +178,7 @@ function Footer() {
               {POPULAR_CATEGORIES.map((category) => (
                 <li key={category}>
                   <Link
-                    href={`/all-equipment?category=${encodeURIComponent(
+                    href={`/equipment?category=${encodeURIComponent(
                       category
                     )}`}
                     className="inline-flex items-center gap-1 text-slate-400 transition hover:text-amber-400"

@@ -166,7 +166,7 @@ export default function WhyChooseUs() {
           </div>
           <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row">
             <Link
-              href="/all-equipment"
+              href="/equipment"
               className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-amber-400"
             >
               <span>Browse Equipment</span>

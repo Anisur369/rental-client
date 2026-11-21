@@ -13,6 +13,7 @@ export default function SignInPage() {
     formData.forEach((value, key) => {
       data[key] = value.toString();
     });
+    console.log(data);
 
     const { data: resData, error } = await signIn.email({
       email: data.email,

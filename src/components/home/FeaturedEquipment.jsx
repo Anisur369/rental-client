@@ -198,7 +198,7 @@ export default function FeaturedEquipment({ initialItems = null }) {
           </div>
 
           <Link
-            href="/all-equipment"
+            href="/equipment"
             className="inline-flex items-center gap-1.5 self-start rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-amber-400 hover:bg-amber-50 sm:self-auto"
           >
             <span>View All Equipment</span>

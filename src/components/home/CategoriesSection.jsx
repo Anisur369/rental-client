@@ -139,7 +139,7 @@ export default function CategoriesSection() {
         >
           {CATEGORIES.map((category) => {
             const IconComponent = category.icon;
-            const queryUrl = `/all-equipment?category=${encodeURIComponent(
+            const queryUrl = `/equipment?category=${encodeURIComponent(
               category.name
             )}`;
 
