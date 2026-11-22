@@ -8,4 +8,12 @@ export const authClient = createAuthClient({
     ]
 })
 
-export const { signIn, signUp, signOut, useSession, updateUser, requestPasswordReset, resetPassword } = createAuthClient()
+export const {
+  signIn,
+  signUp,
+  signOut,
+  useSession,
+  updateUser,
+  requestPasswordReset,
+  resetPassword,
+} = authClient;

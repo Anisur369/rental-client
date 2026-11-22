@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 export default function ProfilePage() {
   const { data: session, isPending } = useSession();
@@ -61,23 +62,33 @@ export default function ProfilePage() {
     async function fetchUserProfile() {
       setLoadingProfile(true);
       try {
+        const token = await getTokenFromClient();
+        const headers = {
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        };
+
         const res = await fetch(
           `${baseUrl}/api/users/profile?email=${encodeURIComponent(userEmail)}`,
           {
             credentials: "include",
-            cache: "no-store",
+            headers,
           }
         );
+
         if (!res.ok) throw new Error("Profile endpoint fallback");
+
         const data = await res.json();
         const profileData = data?.data || data?.user || data;
 
         if (active && profileData) {
           setName(profileData.name || session?.user?.name || "");
           setEmail(profileData.email || userEmail);
-          setImage(profileData.image || profileData.photo || session?.user?.image || "");
+          setImage(
+            profileData.image || profileData.photo || session?.user?.image || ""
+          );
           setPhone(profileData.phone || profileData.phoneNumber || "");
           setAddress(profileData.address || "");
+
           if (profileData.role) {
             const pRole =
               String(profileData.role).charAt(0).toUpperCase() +
@@ -127,18 +138,30 @@ export default function ProfilePage() {
     };
 
     try {
+      const token = await getTokenFromClient();
       const res = await fetch(`${baseUrl}/api/users/profile`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
         credentials: "include",
         body: JSON.stringify(updatedPayload),
       });
+      console.log(res);
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
         throw new Error(errData?.message || "Failed to update profile");
+      }
+
+      const resData = await res.json().catch(() => ({}));
+      const savedUser = resData?.data;
+      if (savedUser) {
+        setName(savedUser.name ?? updatedPayload.name);
+        setImage(savedUser.image ?? updatedPayload.image);
+        setPhone(savedUser.phone ?? updatedPayload.phone);
+        setAddress(savedUser.address ?? updatedPayload.address);
       }
 
       setStatusMessage({

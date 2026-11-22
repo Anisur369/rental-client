@@ -12,16 +12,7 @@ const db = client.db("equipmentRentalDB");
 
 export const auth = betterAuth({
   emailAndPassword: { 
-    enabled: true, 
-    // requireEmailVerification: true,
-    // sendResetPassword: ({ user, url }) => {
-    //   void resend.emails.send({
-    //     from: 'Acme <onboarding@resend.dev>',
-    //     to: user.email,
-    //     subject: 'Reset your password',
-    //     html: `Click <a href="${url}">here</a> to reset your password.`,
-    //   });
-    // },
+    enabled: true,
   },
   socialProviders: {
       google: { 
